@@ -10,11 +10,6 @@ def load(filepath):
     except FileNotFoundError as e:
         print(f"File doesnt exists {e}")
 
-subcomands = {
-    "load": load
-}
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="Dunder Miffin Rewards CLI",
@@ -23,9 +18,9 @@ def main():
     parser.add_argument(
         "subcommand",
         type=str,
-        help="the subcomand to run",
+        help="the subcommand to run",
         choices=("load", "show", "send" ),
-        default="help",
+        default="help"
     )
     parser.add_argument(
         "filepath",
