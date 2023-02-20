@@ -28,7 +28,7 @@ setup(
     version="0.1.0",
     description="Reward Point System for dunder Mifflin",
     author="Rafael Freitas",
-    long_description=read("READ.md"),
+    long_description=read("README.md"),
     long_description_content_type="text/markdown",
     packages=find_packages(),
     entry_points={
