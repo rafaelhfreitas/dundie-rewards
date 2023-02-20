@@ -22,4 +22,4 @@ def main():
 
     args = parser.parse_args()
 
-    globals()[args.subcommand](args.filepath)
+    print(globals()[args.subcommand](args.filepath))
