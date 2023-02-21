@@ -70,7 +70,7 @@ from .constants import PEOPLE_FILE
 def test_load_positive_has_2_people(request):
     """Test load function."""
 
-    assert len(load(PEOPLE_FILE)) == 2
+    assert len(load(PEOPLE_FILE)) == 3
     assert load(PEOPLE_FILE)[0][0] == "R"
 
 
