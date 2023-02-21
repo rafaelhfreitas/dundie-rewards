@@ -1,5 +1,6 @@
 import argparse
-from .core import load
+from .core import load   # noqa
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -10,7 +11,7 @@ def main():
         "subcommand",
         type=str,
         help="the subcommand to run",
-        choices=("load", "show", "send" ),
+        choices=("load", "show", "send"),
         default="help"
     )
     parser.add_argument(

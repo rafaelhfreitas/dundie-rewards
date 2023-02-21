@@ -6,3 +6,10 @@ testpaths = [
     "tests",
     "integration",
 ]
+
+
+
+[tool.flake8]
+exclude = [".venv", "build"]
+max-line-length=79
+# exclude-ignore= "W293,"

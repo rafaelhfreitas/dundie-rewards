@@ -16,7 +16,7 @@ In [5]: def dobra(f):
 In [6]: def dobra(f):
    ...:     def manipuladora(a, b):
    ...:         return f(a * 2, b * 2)
-   ...: 
+   ...:
    ...:     return manipuladora
 
 In [7]: soma = dobra(soma)
@@ -33,16 +33,16 @@ In [11]: def bold(f):
     ...:     @wraps(f)
     ...:     def wrapper(text):
     ...:         return f(f"<strong>{text}</strong>")
-    ...: 
+    ...:
     ...:     return wrapper
 
-In [12]: 
+In [12]:
 
 In [12]: def italic(f):
     ...:     @wraps(f)
     ...:     def wrapper(text):
     ...:         return f(f"<i>{text}</i>")
-    ...: 
+    ...:
     ...:     return wrapper
 
 In [13]: @bold
@@ -56,13 +56,9 @@ Out[14]: 'Hello <i><strong>Rafael</strong></i>'
 In [16]: assert hello("Rafael") == "Hello <i><strong>Rafael</strong></i>"
 
 """
-import os
-import uuid
-import pytest  
+import pytest
 from dundie.core import load
 from .constants import PEOPLE_FILE
-
-
 
 
 @pytest.mark.unit
