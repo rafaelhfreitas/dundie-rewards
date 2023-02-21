@@ -53,16 +53,16 @@ In [13]: @bold
 In [14]: hello("Rafael")
 Out[14]: 'Hello <i><strong>Rafael</strong></i>'
 
-
 In [16]: assert hello("Rafael") == "Hello <i><strong>Rafael</strong></i>"
 
-
 """
-
+import pytest
 from dundie.core import load
 from .constants import PEOPLE_FILE
 
 
+@pytest.mark.unit
+@pytest.mark.high
 def test_load():
     """Test load function."""
     assert len(load(PEOPLE_FILE)) == 2

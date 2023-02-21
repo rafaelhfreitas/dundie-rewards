@@ -25,11 +25,12 @@ Out[20]:
 In [21]: 
 
 """
-
+import pytest
 from subprocess import check_output
 
 
-
+@pytest.mark.integration
+@pytest.mark.high
 def test_load():
     """test command load"""
     out = check_output(
