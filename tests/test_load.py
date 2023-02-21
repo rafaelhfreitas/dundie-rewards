@@ -62,33 +62,13 @@ import pytest
 from dundie.core import load
 from .constants import PEOPLE_FILE
 
-def setup_module():
-    print()
-    print("Running before this module s tests")
 
-def teardown_module():
-    print()
-    print("Running after this module s tests")
-      
-
-@pytest.fixture(scope="function", autouse=True)
-def create_new_file(tmpdir):
-    file_ = tmpdir.join("new_file.txt")
-    file_.write("isso é sujeira...")
-    yield
-    file_.remove()
 
 
 @pytest.mark.unit
 @pytest.mark.high
-def test_load(request):
+def test_load_positive_has_2_people(request):
     """Test load function."""
-
-    filepath = f"arquivo-indesejado-{uuid.uuid4()}.txt"
-    request.addfinalizer(lambda: os.unlink(filepath))
-
-    with open(filepath,"w") as file_:
-        file_.write("dados uteis somente para o teste")
 
     assert len(load(PEOPLE_FILE)) == 2
     assert load(PEOPLE_FILE)[0][0] == "R"
@@ -96,11 +76,7 @@ def test_load(request):
 
 @pytest.mark.unit
 @pytest.mark.high
-def test_load2():
+def test_load_positive_first_name_starts_with_r(request):
     """Test load function."""
 
-    with open(f"arquivo-indesejado-{uuid.uuid4()}.txt","w") as file_:
-        file_.write("dados uteis somente para o teste")
-
-    assert len(load(PEOPLE_FILE)) == 2
     assert load(PEOPLE_FILE)[0][0] == "R"
