@@ -15,9 +15,8 @@ ipython:
 test:
 	@.venv/bin/pytest -s 
 
-
 watch:
-# @.venv/bin/ptw -- -vv -s	
+	# @.venv/bin/ptw -- -vv -s	
 	@ls **/*.py | entr pytest
 
 
