@@ -28,6 +28,8 @@ jobs:
         run: pip install '.[test]'
       - name: Run linters - Look for style errors
         run: pflake8
+      - name: Check for importing style
+        run: isort dundie tests integration
       - name: Look for auto format errors
         run: black --check --diff dundie tests integration
   tests:

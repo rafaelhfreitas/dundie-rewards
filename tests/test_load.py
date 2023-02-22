@@ -57,7 +57,9 @@ In [16]: assert hello("Rafael") == "Hello <i><strong>Rafael</strong></i>"
 
 """
 import pytest
+
 from dundie.core import load
+
 from .constants import PEOPLE_FILE
 
 

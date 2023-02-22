@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import os
 import logging
+import os
 from logging import handlers
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "WARNING").upper()
