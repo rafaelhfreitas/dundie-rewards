@@ -1,0 +1,20 @@
+{
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "python.linting.flake8Path": "pflake8",
+    "files.exclude": {
+        ".venv": true,
+        ".vscodelocal": true,
+        "**/.pytest_cache": true,
+        "**/__pycache__": true,
+        "**/CVS": true,
+        "*.egg-info": true,
+        "build": true
+    },
+    "editor.rulers": [
+        80
+    ],
+    "files.insertFinalNewline": true,
+
+}
