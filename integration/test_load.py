@@ -39,7 +39,7 @@ def test_load_positive_call_load_command():
         .decode("utf-8")
         .split("\n")
     )
-    assert len(out) == 2
+    assert len(out) == 16
 
 
 @pytest.mark.integration
