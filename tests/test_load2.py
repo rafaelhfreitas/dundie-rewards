@@ -1,5 +1,7 @@
 import pytest
+
 from dundie.core import load
+
 from .constants import PEOPLE_FILE
 
 EXPECTED_NAMES = ["Rafael Freitas", "Masaharu", "Viviane"]
@@ -12,7 +14,7 @@ EMAIL_DOMAIN = ["rafael@teste.com", "masaharu@teste.com", "viviane@teste.com"]
 @pytest.mark.high
 def test_load(request):
     """Test loaded data conforms with loaded file"""
-    result = load(PEOPLE_FILE)   # load people.csv as a list of csv lines
+    result = load(PEOPLE_FILE)  # load people.csv as a list of csv lines
     assert len(result) == 3
     for line in result:
         data = line.split(",")

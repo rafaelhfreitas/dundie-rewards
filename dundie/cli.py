@@ -1,32 +1,39 @@
-import argparse
+import pkg_resources
+# import rich_click as click
+import click
+from rich import print
 
-from .core import load
+from dundie import core
+
+# click.rich_click.USE_RICH_MARKUP = True
+# click.rich_click.USE_MARKDOWN = True
+# click.rich_click.SHOW_ARGUMENTS = True
+# click.rich_click.GROUP_ARGUMENTS_OPTIONS = True
+# click.rich_click.SHOW_METAVARS_COLUMN = True
+# click.rich_click.APPEND_METAVARS_HELP = True
 
 
+@click.group()
+@click.version_option(pkg_resources.get_distribution("dundie").version)
 def main():
-    parser = argparse.ArgumentParser(
-        description="Dunder Miffin Rewards CLI",
-        epilog="Enjoy and use with cautious.",
-    )
-    parser.add_argument(
-        "subcommand",
-        type=str,
-        help="the subcommand to run",
-        choices=("load", "show", "send"),
-        default="help",
-    )
-    parser.add_argument(
-        "filepath", type=str, help="File path to load", default=None
-    )
+    """Dunder Mifflin Rewards System
 
-    args = parser.parse_args()
+    This cli application controls DM rewards.
+    """
 
-    # print(*globals()[args.subcommand](args.filepath))
 
-    if args.subcommand == "load":
-        result = load(args.filepath)
-        header = ["name", "dept", "role", "email"]
-        for person in result:
-            print("-"*50)
-            for key, value in zip(header, person.split(",")):
-                print(f"{key=} -> {value.strip()}")
+@main.command
+@click.argument("filepath", type=click.Path(exists=True))
+def load(filepath):
+    """Loads the file to the database
+
+    - Validates data
+    - Parses the file
+    - Loads to database
+    """
+    result = core.load(filepath)
+    header = ["name", "dept", "role", "email"]
+    for person in result:
+        print("-" * 50)
+        for key, value in zip(header, person.split(",")):
+            print(f"[red]{key}[/] -> [magenta]{value.strip()}[/]")
