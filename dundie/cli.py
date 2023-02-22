@@ -1,4 +1,3 @@
-# import click
 import pkg_resources
 import rich_click as click
 from rich import print
@@ -22,7 +21,7 @@ def main():
     """
 
 
-@main.command
+@main.command()
 @click.argument("filepath", type=click.Path(exists=True))
 def load(filepath):
     """Loads the file to the database
