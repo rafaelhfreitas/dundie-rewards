@@ -1,6 +1,6 @@
 import argparse
 
-from .core import load  # noqa
+from .core import load
 
 
 def main():
@@ -21,4 +21,12 @@ def main():
 
     args = parser.parse_args()
 
-    print(*globals()[args.subcommand](args.filepath))
+    # print(*globals()[args.subcommand](args.filepath))
+
+    if args.subcommand == "load":
+        result = load(args.filepath)
+        header = ["name", "dept", "role", "email"]
+        for person in result:
+            print("-"*50)
+            for key, value in zip(header, person.split(",")):
+                print(f"{key=} -> {value.strip()}")

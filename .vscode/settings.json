@@ -7,10 +7,10 @@
         ".venv": true,
         ".vscodelocal": true,
         "**/.pytest_cache": true,
-        "**/__pycache__": true,
+        "**/**/__pycache__": true,
         "**/CVS": true,
         "*.egg-info": true,
-        "build": true
+        "build": true,
     },
     "editor.rulers": [
         80
