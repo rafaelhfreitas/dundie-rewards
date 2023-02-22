@@ -16,6 +16,10 @@ lint:
 	@.venv/bin/pflake8
 
 
+fmt:
+	@.venv/bin/black dundie tests integration
+
+
 test:
 	@.venv/bin/pytest -s 
 

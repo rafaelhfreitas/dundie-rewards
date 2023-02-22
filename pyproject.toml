@@ -13,3 +13,20 @@ testpaths = [
 exclude = [".venv", "build"]
 max-line-length=79
 # exclude-ignore= "W293,"
+
+
+
+[tool.black]
+line-length = 79
+target-version = ["py36", "py37"]
+exclude = '''
+/(
+    \.eggs
+    | \.git
+    | \.venv
+    | _build
+    | build
+    | dist
+    | migrations
+)/
+'''
