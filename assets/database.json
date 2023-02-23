@@ -24,21 +24,81 @@
     "movement": {
         "rafael@teste.com": [
             {
-                "date": "2023-02-23T00:27:48.631970",
+                "date": "2023-02-23T01:40:08.788345",
                 "actor": "system",
                 "value": 500
+            },
+            {
+                "date": "2023-02-23T01:40:30.964876",
+                "actor": "rafael",
+                "value": 30
+            },
+            {
+                "date": "2023-02-23T01:47:04.193746",
+                "actor": "rafael",
+                "value": -30
+            },
+            {
+                "date": "2023-02-23T01:50:00.705234",
+                "actor": "rafael",
+                "value": 62
+            },
+            {
+                "date": "2023-02-23T01:50:11.311212",
+                "actor": "rafael",
+                "value": -62
+            },
+            {
+                "date": "2023-02-23T01:51:58.126686",
+                "actor": "rafael",
+                "value": -62
+            },
+            {
+                "date": "2023-02-23T01:52:05.315769",
+                "actor": "rafael",
+                "value": 62
             }
         ],
         "masaharu@teste.com": [
             {
-                "date": "2023-02-23T00:27:48.634149",
+                "date": "2023-02-23T01:40:08.791839",
                 "actor": "system",
                 "value": 100
+            },
+            {
+                "date": "2023-02-23T01:40:30.964889",
+                "actor": "rafael",
+                "value": 30
+            },
+            {
+                "date": "2023-02-23T01:47:04.193760",
+                "actor": "rafael",
+                "value": -30
+            },
+            {
+                "date": "2023-02-23T01:50:00.705247",
+                "actor": "rafael",
+                "value": 62
+            },
+            {
+                "date": "2023-02-23T01:50:11.311226",
+                "actor": "rafael",
+                "value": -62
+            },
+            {
+                "date": "2023-02-23T01:51:58.126700",
+                "actor": "rafael",
+                "value": -62
+            },
+            {
+                "date": "2023-02-23T01:52:05.315783",
+                "actor": "rafael",
+                "value": 62
             }
         ],
         "viviane@teste.com": [
             {
-                "date": "2023-02-23T00:27:48.634871",
+                "date": "2023-02-23T01:40:08.793220",
                 "actor": "system",
                 "value": 100
             }
@@ -46,13 +106,13 @@
     },
     "users": {
         "rafael@teste.com": {
-            "password": "zOAvlPBE"
+            "password": "xofINpP5"
         },
         "masaharu@teste.com": {
-            "password": "Xy6G2Hf5"
+            "password": "f1Dqzrkm"
         },
         "viviane@teste.com": {
-            "password": "Sr9vjtDB"
+            "password": "6yuGYnCq"
         }
     }
 }
