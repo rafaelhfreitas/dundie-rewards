@@ -5,7 +5,7 @@ from dundie.settings import DATABASE_PATH, EMAIL_FROM
 from dundie.utils.email import check_valid_email, send_email
 from dundie.utils.user import generate_simple_password
 
-DB_SCHEMA = {"people": {}, "balance": {}, "movement": {}, "user": {}}
+EMPTY_DB = {"people": {}, "balance": {}, "movement": {}, "users": {}}
 
 
 def connect() -> dict:
@@ -14,12 +14,12 @@ def connect() -> dict:
         with open(DATABASE_PATH, "r") as database_file:
             return json.loads(database_file.read())
     except (json.JSONDecodeError, FileNotFoundError):
-        return DB_SCHEMA
+        return EMPTY_DB
 
 
 def commit(db):
     """Save db back to the database file."""
-    if db.keys() != DB_SCHEMA.keys():
+    if db.keys() != EMPTY_DB.keys():
         raise RuntimeError("Database Schema is invalid")
 
     with open(DATABASE_PATH, "w") as database_file:
@@ -45,11 +45,18 @@ def add_person(db, pk, data):
     table[pk] = person
     if created:
         set_initial_balance(db, pk, person)
-        password = generate_simple_password(size=8)
+        password = set_initial_password(db, pk)
         send_email(EMAIL_FROM, pk, "Your dundie password", password)
         # TODO Encrypt and send only link not password
 
     return person, created
+
+
+def set_initial_password(db, pk):
+    """Generate and saves password"""
+    db["users"].setdefault(pk, {})
+    db["users"][pk]["password"] = generate_simple_password(8)
+    return db["users"][pk]["password"]
 
 
 def set_initial_balance(db, pk, person):
@@ -61,7 +68,7 @@ def set_initial_balance(db, pk, person):
 
 def add_movement(db, pk, value, user="system"):
     """Add movement"""
-    movements = db["movements"].setdefault(pk, [])
+    movements = db["movement"].setdefault(pk, [])
     movements.append(
         {"date": datetime.now().isoformat(), "actor": user, "value": value}
     )
