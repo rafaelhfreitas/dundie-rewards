@@ -1,12 +1,12 @@
-.PHONY: install virtualenv ipython clean test pflake8
+.PHONY: install virtualenv ipython clean test pflake8 fmt lint watch docs docs-serve build
 
 install:
 	@echo "Installing for dev environment"
-	@@.venv/bin/python -m pip install -e '.[dev]'
+	@.venv/bin/python3 -m pip install -e '.[test,dev]'
 
 
 virtualenv:
-	@.venv/bin/python -m pip -m venv .venv
+	@.venv/bin/python3 -m pip -m venv .venv
 
 
 ipython:
@@ -24,12 +24,13 @@ fmt:
 test:
 	@.venv/bin/pytest -s --forked
 
+
 watch:
 	# @.venv/bin/ptw -- -vv -s	
 	@ls **/*.py | entr pytest --forked
 
 
-clean:            ## Clean unused files.
+clean:           
 	@find ./ -name '*.pyc' -exec rm -f {} \;
 	@find ./ -name '__pycache__' -exec rm -rf {} \;
 	@find ./ -name 'Thumbs.db' -exec rm -f {} \;
@@ -43,3 +44,19 @@ clean:            ## Clean unused files.
 	@rm -rf htmlcov
 	@rm -rf .tox/
 	@rm -rf docs/_build
+
+
+docs:
+	@mkdocs build  --clean
+
+docs-serve:
+	@mkdocs serve	
+
+build:
+	@python3 setup.py sdist bdist_wheel
+
+publish-test:
+	@twine upload --repository testpypi dist/*	
+
+publish:
+	@twine upload dist/*	

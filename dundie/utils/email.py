@@ -28,6 +28,5 @@ def send_email(from_, to, subject, text) -> None:
             message["From"] = from_
             message["To"] = ",".join(to)
             server.sendmail(from_, to, message.as_string())
-    except Exception as e:
+    except Exception:
         log.error("Cannot send email to %s", to)
-        log.error("Error: %s", str(e))
