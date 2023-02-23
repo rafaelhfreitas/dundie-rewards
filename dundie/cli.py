@@ -49,3 +49,24 @@ def load(filepath):
 
     console = Console()
     console.print(table)
+
+
+@main.command()
+@click.option("--dept", required=False)
+@click.option("--email", required=False)
+def show(**query):
+    """Retrieve data from database using **query params"""
+    result = core.read(**query)
+
+    if not result:
+        print("Nothing to show")
+
+    table = Table(title="Dunder Mufflin Report")
+    for key in result[0]:
+        table.add_column(key.title(), style="magenta")
+
+    for person in result:
+        table.add_row(*[str(value) for value in person.values()])
+
+    console = Console()
+    console.print(table)
