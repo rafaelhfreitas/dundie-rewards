@@ -1,0 +1,37 @@
+
+{
+    "people": {
+        "rafael@teste.com": {
+            "role": "Salesman",
+            "dept": "Sales",
+            "active": true,
+            "name": "Rafael"
+        },
+        "masaharu@teste.com": {
+            "role": "Salesman",
+            "dept": "Sales",
+            "active": true,
+            "name": "Masaharu"          
+        },
+        "viviane@teste.com": {
+            "role": "Manager",
+            "dept": "Directory",
+            "active": true,
+            "name": "Viviane"            
+        }
+    },
+    "balance": {
+        "rafael@teste.com": 500
+    },
+    "movement": {
+        "rafael@teste.com": [
+            {"date": "", "value" : 0}
+        ]
+    },
+    "user": {
+        "rafael@teste.com": {
+            "password": "dhsjhdjshdj",
+            "is_admin": false
+        }
+    }
+}
