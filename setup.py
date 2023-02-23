@@ -25,14 +25,15 @@ def read_requirements(path):
 
 
 setup(
-    name="dundie",
+    name="rafaelfreitas_dundie",
     version="0.1.0",
     description="Reward Point System for dunder Mifflin",
     author="Rafael Freitas",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     python_requires=">=3.8",
-    packages=find_packages(),
+    packages=find_packages(exclude=["integration"]),
+    include_package_data=True,
     entry_points={
         "console_scripts": [
             "dundie = dundie.__main__:main"
