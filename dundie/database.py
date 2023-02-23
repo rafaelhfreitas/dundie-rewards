@@ -1,11 +1,12 @@
 import json
-from datetime import datetime
 
-from dundie.settings import DATABASE_PATH, EMAIL_FROM
+from datetime import datetime
+from dundie.settings import DATABASE_PATH
 from dundie.utils.email import check_valid_email, send_email
 from dundie.utils.user import generate_simple_password
+from dundie.settings import EMAIL_FROM
 
-DB_SCHEMA = {"people": {}, "balance": {}, "movement": {}, "user": {}}
+DB_SCHEMA = {"people": {}, "balance": {}, "movement": {}, "users": {}}
 
 
 def connect() -> dict:
@@ -27,7 +28,7 @@ def commit(db):
 
 
 def add_person(db, pk, data):
-    """Saves person data to database.
+    """Saves person data to database. 
 
     - Email is unique (resolved by dictonary hash table)
     - If exists, update, else create
@@ -45,11 +46,18 @@ def add_person(db, pk, data):
     table[pk] = person
     if created:
         set_initial_balance(db, pk, person)
-        password = generate_simple_password(size=8)
+        password = set_initial_password(db, pk)
         send_email(EMAIL_FROM, pk, "Your dundie password", password)
         # TODO Encrypt and send only link not password
 
     return person, created
+
+
+def set_initial_password(db, pk):
+    """ Generate and saves password"""
+    db["users"].setdefault(pk, {})
+    db["users"][pk]["password"] = generate_simple_password(8)
+    return db["users"][pk]["password"]
 
 
 def set_initial_balance(db, pk, person):
@@ -60,10 +68,14 @@ def set_initial_balance(db, pk, person):
 
 
 def add_movement(db, pk, value, user="system"):
-    """Add movement"""
-    movements = db["movements"].setdefault(pk, [])
+    """ Add movement"""
+    movements = db["movement"].setdefault(pk, [])
     movements.append(
-        {"date": datetime.now().isoformat(), "actor": user, "value": value}
+        {
+            "date": datetime.now().isoformat(),
+            "actor": user,
+            "value": value
+        }
     )
 
     db["balance"][pk] = sum([item["value"] for item in movements])

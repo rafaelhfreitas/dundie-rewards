@@ -28,7 +28,7 @@
             {"date": "", "value" : 0, "actor": "system"}
         ]
     },
-    "user": {
+    "users": {
         "rafael@teste.com": {
             "password": "dhsjhdjshdj",
             "is_admin": false
