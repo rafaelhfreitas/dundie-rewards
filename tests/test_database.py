@@ -22,4 +22,4 @@ def test_commit_to_database():
     commit(db)
 
     db = connect()
-    assert db["people"]["rafael@teste.com"]["name"] == "Rafael Henrique"
+    assert db["people"]["rafael@teste.com"] == data
