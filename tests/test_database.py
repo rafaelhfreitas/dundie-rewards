@@ -1,12 +1,6 @@
 import pytest
 
-from dundie.database import (
-    DB_SCHEMA,
-    add_movement,
-    add_person,
-    commit,
-    connect,
-)
+from dundie.database import EMPTY_DB, add_movement, add_person, commit, connect
 
 
 @pytest.mark.unit
@@ -14,7 +8,7 @@ def test_database_schema():
     """Test access to database"""
 
     db = connect()
-    assert db.keys() == DB_SCHEMA.keys()
+    assert db.keys() == EMPTY_DB.keys()
 
 
 @pytest.mark.unit

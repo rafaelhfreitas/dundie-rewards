@@ -5,7 +5,7 @@ from dundie.settings import DATABASE_PATH, EMAIL_FROM
 from dundie.utils.email import check_valid_email, send_email
 from dundie.utils.user import generate_simple_password
 
-DB_SCHEMA = {"people": {}, "balance": {}, "movement": {}, "users": {}}
+EMPTY_DB = {"people": {}, "balance": {}, "movement": {}, "users": {}}
 
 
 def connect() -> dict:
@@ -14,12 +14,12 @@ def connect() -> dict:
         with open(DATABASE_PATH, "r") as database_file:
             return json.loads(database_file.read())
     except (json.JSONDecodeError, FileNotFoundError):
-        return DB_SCHEMA
+        return EMPTY_DB
 
 
 def commit(db):
     """Save db back to the database file."""
-    if db.keys() != DB_SCHEMA.keys():
+    if db.keys() != EMPTY_DB.keys():
         raise RuntimeError("Database Schema is invalid")
 
     with open(DATABASE_PATH, "w") as database_file:
