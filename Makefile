@@ -53,4 +53,10 @@ docs-serve:
 	@mkdocs serve	
 
 build:
-	@.venv/bin/python3 setup.py sdist bdist_wheel
+	@python3 setup.py sdist bdist_wheel
+
+publish-test:
+	@twine upload --repository testpypi dist/*	
+
+publish:
+	@twine upload dist/*	
