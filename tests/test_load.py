@@ -69,7 +69,6 @@ def test_load_positive_has_2_people(request):
     """Test load function."""
 
     assert len(load(PEOPLE_FILE)) == 3
-    assert load(PEOPLE_FILE)[0][0] == "R"
 
 
 @pytest.mark.unit
@@ -77,4 +76,4 @@ def test_load_positive_has_2_people(request):
 def test_load_positive_first_name_starts_with_r(request):
     """Test load function."""
 
-    assert load(PEOPLE_FILE)[0][0] == "R"
+    assert load(PEOPLE_FILE)[0]["name"] == "Rafael Freitas"

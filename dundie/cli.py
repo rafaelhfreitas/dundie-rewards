@@ -34,13 +34,14 @@ def load(filepath):
     - Loads to database
     """
     table = Table(title="Dunder Mufflin Associates")
-    headers = ["name", "dept", "role", "email"]
+    headers = ["name", "dept", "role", "created", "email"]
     for header in headers:
         table.add_column(header, style="green")
 
     result = core.load(filepath)
     for person in result:
-        table.add_row(*[field.strip() for field in person.split(",")])
+        table.add_row(*[str(value) for value in person.values()])
+        # table.add_row(*[field.strip() for field in person.split(",")])
         # table.add_row(*person.split(","))
         # print("-" * 50)
         # for key, value in zip(header, person.split(",")):

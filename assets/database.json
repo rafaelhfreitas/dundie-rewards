@@ -1,0 +1,58 @@
+{
+    "people": {
+        "rafael@teste.com": {
+            "name": "Rafael Freitas",
+            "dept": "Sales",
+            "role": "Salesman"
+        },
+        "masaharu@teste.com": {
+            "name": "Masaharu",
+            "dept": "Sales",
+            "role": "Manager"
+        },
+        "viviane@teste.com": {
+            "name": "Viviane",
+            "dept": "Directory",
+            "role": "Manager"
+        }
+    },
+    "balance": {
+        "rafael@teste.com": 500,
+        "masaharu@teste.com": 100,
+        "viviane@teste.com": 100
+    },
+    "movement": {
+        "rafael@teste.com": [
+            {
+                "date": "2023-02-22T23:55:42.573618",
+                "actor": "system",
+                "value": 500
+            }
+        ],
+        "masaharu@teste.com": [
+            {
+                "date": "2023-02-22T23:55:42.576576",
+                "actor": "system",
+                "value": 100
+            }
+        ],
+        "viviane@teste.com": [
+            {
+                "date": "2023-02-22T23:55:42.577912",
+                "actor": "system",
+                "value": 100
+            }
+        ]
+    },
+    "users": {
+        "rafael@teste.com": {
+            "password": "ADRCdt0S"
+        },
+        "masaharu@teste.com": {
+            "password": "1PuMK2Jk"
+        },
+        "viviane@teste.com": {
+            "password": "hnFzMoc5"
+        }
+    }
+}
