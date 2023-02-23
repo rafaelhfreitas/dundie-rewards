@@ -1,6 +1,6 @@
 import pytest
 
-from dundie.database import DB_SCHEMA, connect, commit
+from dundie.database import DB_SCHEMA, commit, connect
 
 
 @pytest.mark.unit
@@ -13,11 +13,7 @@ def test_database_schema():
 
 def test_commit_to_database():
     db = connect()
-    data = {
-        "name": "Rafael Henrique",
-        "role": "Salesman",
-        "dept": "Sales"
-    }
+    data = {"name": "Rafael Henrique", "role": "Salesman", "dept": "Sales"}
     db["people"]["rafael@teste.com"] = data
     commit(db)
 
