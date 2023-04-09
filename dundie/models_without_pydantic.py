@@ -1,3 +1,31 @@
+"""
+
+db = connect()
+
+# print(db["people"].values())
+
+
+for pk, data in db["people"].items():
+    p = Person(pk, **data)
+    print(p)
+
+
+print(p)
+print(json.dumps(vars(p)))
+
+print(json.dumps(p.dict()))
+
+balance = Balance(person=p, value=Decimal(100))
+
+print(json.dumps(balance.dict()))
+# int, float, str
+# bool True -> true
+# None -> null
+# {'key'} -> {"key"}
+# [], () -> []
+
+"""
+
 from dataclasses import dataclass
 from decimal import Decimal
 from datetime import datetime
@@ -60,28 +88,3 @@ class Movement(Serializable):
     date: datetime
     actor: str
     value: Decimal
-
-
-db = connect()
-
-# print(db["people"].values())
-
-
-for pk, data in db["people"].items():
-    p = Person(pk, **data)
-    print(p)
-
-
-print(p)
-print(json.dumps(vars(p)))
-
-print(json.dumps(p.dict()))
-
-balance = Balance(person=p, value=Decimal(100))
-
-print(json.dumps(balance.dict()))
-# int, float, str
-# bool True -> true
-# None -> null
-# {'key'} -> {"key"}
-# [], () -> []
