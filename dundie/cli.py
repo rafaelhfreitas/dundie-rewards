@@ -21,6 +21,10 @@ def main():
     """Dunder Mifflin Rewards System
 
     This cli application controls DM rewards.
+
+    - admins can load information to he people database and assign points
+    - users can view reports and transfer points
+
     """
 
 
@@ -36,7 +40,7 @@ def load(filepath):
     - Loads to database
     """
     table = Table(title="Dunder Mufflin Associates")
-    headers = ["name", "dept", "role", "created", "email"]
+    headers = ["email", "name", "dept", "role", "created"]
     for header in headers:
         table.add_column(header, style="green")
 
