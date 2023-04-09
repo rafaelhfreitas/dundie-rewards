@@ -2,8 +2,6 @@ from decimal import Decimal
 from datetime import datetime
 from pydantic import BaseModel, validator
 from dundie.utils.email import check_valid_email
-import json
-from dundie.database import connect
 
 
 class InvalidEmailError(Exception):
