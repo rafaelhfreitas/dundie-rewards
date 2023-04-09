@@ -2,6 +2,9 @@ from dataclasses import dataclass
 from decimal import Decimal
 from datetime import datetime
 from abc import ABC
+import json
+from dundie.database import connect
+
 
 from dundie.utils.email import check_valid_email
 
@@ -34,11 +37,12 @@ class Person(Serializable):
 
     def __post_init__(self):
         if not check_valid_email(self.pk):
-            raise InvalidEmailError(f"Email is invalid for {self} - {self.pk!r}")
+            raise InvalidEmailError(
+                f"Email is invalid for {self} - {self.pk!r}"
+            )
 
     def __str__(self):
         return f"{self.name} - {self.role}"
-    
 
 
 @dataclass
@@ -53,7 +57,6 @@ class Balance(Serializable):
         }
 
 
-
 @dataclass
 class Movement(Serializable):
     person: Person
@@ -62,8 +65,6 @@ class Movement(Serializable):
     value: Decimal
 
 
-import json
-from dundie.database import connect
 db = connect()
 
 # print(db["people"].values())

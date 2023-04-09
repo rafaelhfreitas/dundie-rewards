@@ -2,6 +2,8 @@ from decimal import Decimal
 from datetime import datetime
 from pydantic import BaseModel, validator
 from dundie.utils.email import check_valid_email
+import json
+from dundie.database import connect
 
 
 class InvalidEmailError(Exception):
@@ -16,7 +18,7 @@ class Person(BaseModel):
 
     def __str__(self):
         return f"{self.name} - {self.role}"
-    
+
     @validator("pk")
     def validate_email(cls, value):
         if not check_valid_email(value):
@@ -43,8 +45,6 @@ class Movement(BaseModel):
     value: Decimal
 
 
-import json
-from dundie.database import connect
 db = connect()
 
 # print(db["people"].values())
