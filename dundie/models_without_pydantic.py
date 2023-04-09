@@ -51,10 +51,7 @@ class Balance(Serializable):
     value: Decimal
 
     def dict(self):
-        return {
-            "person": self.person.pk,
-            "balance": str(self.value)
-        }
+        return {"person": self.person.pk, "balance": str(self.value)}
 
 
 @dataclass
@@ -70,7 +67,7 @@ db = connect()
 # print(db["people"].values())
 
 
-for pk, data in db['people'].items():
+for pk, data in db["people"].items():
     p = Person(pk, **data)
     print(p)
 
