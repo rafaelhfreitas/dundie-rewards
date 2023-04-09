@@ -1,10 +1,35 @@
+"""
+
+db = connect()
+
+# print(db["people"].values())
+
+
+for pk, data in db["people"].items():
+    p = Person(pk, **data)
+    print(p)
+
+
+print(p)
+print(json.dumps(vars(p)))
+
+print(json.dumps(p.dict()))
+
+balance = Balance(person=p, value=Decimal(100))
+
+print(json.dumps(balance.dict()))
+# int, float, str
+# bool True -> true
+# None -> null
+# {'key'} -> {"key"}
+# [], () -> []
+
+"""
+
 from dataclasses import dataclass
 from decimal import Decimal
 from datetime import datetime
 from abc import ABC
-import json
-from dundie.database import connect
-
 
 from dundie.utils.email import check_valid_email
 
@@ -51,10 +76,7 @@ class Balance(Serializable):
     value: Decimal
 
     def dict(self):
-        return {
-            "person": self.person.pk,
-            "balance": str(self.value)
-        }
+        return {"person": self.person.pk, "balance": str(self.value)}
 
 
 @dataclass
@@ -63,28 +85,3 @@ class Movement(Serializable):
     date: datetime
     actor: str
     value: Decimal
-
-
-db = connect()
-
-# print(db["people"].values())
-
-
-for pk, data in db['people'].items():
-    p = Person(pk, **data)
-    print(p)
-
-
-print(p)
-print(json.dumps(vars(p)))
-
-print(json.dumps(p.dict()))
-
-balance = Balance(person=p, value=Decimal(100))
-
-print(json.dumps(balance.dict()))
-# int, float, str
-# bool True -> true
-# None -> null
-# {'key'} -> {"key"}
-# [], () -> []
